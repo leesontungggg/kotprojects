@@ -4,9 +4,16 @@ import { Facebook, Instagram } from "lucide-react";
 export default function Home() {
   return (
     <div className="min-h-screen w-screen">
-      <section className="h-screen w-full">
-        <div className="container mx-auto w-full h-full flex justify-start items-end py-40">
-          <h1 className="text-8xl font-bold text-white font-grotesk">
+      <section className="h-screen w-full bg-black">
+        <div className="container mx-auto w-full h-full flex-col justify-between items-start py-40">
+          <Image
+            src="/2.svg"
+            alt="KOT Projects Logo"
+            width={400}
+            height={100}
+            className="mb-16"
+          />
+          <h1 className="text-8xl font-bold text-white font-grotesk transition-transform duration-300 ease-in-out transform hover:scale-105">
             Ready to bring your
             <br />
             vision to life?
@@ -16,6 +23,13 @@ export default function Home() {
       <section className="h-screen w-full bg-[#3c55ff]">
         <div className="container mx-auto w-full h-full flex justify-start items-end py-40">
           <div className="w-3/5 ml-auto flex flex-col items-center text-center">
+            <Image
+              src="/3.svg"
+              alt="KOT Projects Logo"
+              width={100}
+              height={100}
+              className="mb-8"
+            />
             <h2 className="text-6xl font-bold text-[#99d9d9] font-grotesk mb-8">
               Transforming creativity into reality.
             </h2>
