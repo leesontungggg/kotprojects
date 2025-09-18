@@ -5,24 +5,24 @@ export default function Home() {
   return (
     <div className="min-h-screen w-screen">
       <section className="h-screen w-full bg-black">
-        <div className="container mx-auto w-full h-full flex-col justify-between items-start py-40">
+        <div className="container mx-auto w-full h-full flex-col justify-between items-center md:items-start py-8 md:py-40">
           <Image
             src="/2.svg"
             alt="KOT Projects Logo"
             width={400}
             height={100}
-            className="mb-16"
+            className="mb-4 md:mb-16"
           />
-          <h1 className="text-8xl font-bold text-white font-grotesk transition-transform duration-300 ease-in-out transform hover:scale-105">
+          <h1 className="text-4xl text-center md:text-left md:text-8xl font-bold text-white font-grotesk transition-transform duration-300 ease-in-out transform hover:scale-105">
             Ready to bring your
             <br />
             vision to life?
           </h1>
         </div>
       </section>
-      <section className="h-screen w-full bg-[#3c55ff]">
-        <div className="container mx-auto w-full h-full flex justify-start items-end py-40">
-          <div className="w-3/5 ml-auto flex flex-col items-center text-center">
+      <section className="h-fit md:h-screen w-full bg-[#3c55ff]">
+        <div className="container mx-auto w-full h-full flex justify-start items-start md:items-end py-16 md:py-40">
+          <div className="w-full md:w-3/5 ml-auto flex flex-col items-center text-center">
             <Image
               src="/3.svg"
               alt="KOT Projects Logo"
@@ -30,7 +30,7 @@ export default function Home() {
               height={100}
               className="mb-8"
             />
-            <h2 className="text-6xl font-bold text-[#99d9d9] font-grotesk mb-8">
+            <h2 className="text-3xl md:text-6xl font-bold text-[#99d9d9] font-grotesk mb-8">
               Transforming creativity into reality.
             </h2>
             <p className="text-2xl text-[#99d9d9] mb-8 font-anonymous font-bold">
@@ -44,13 +44,13 @@ export default function Home() {
         </div>
       </section>
       <section className="h-screen w-full bg-white">
-        <div className="container mx-auto w-full h-full flex flex-col justify-start items-start py-40">
-          <h1 className="text-8xl font-bold text-black font-grotesk uppercase">
+        <div className="container mx-auto w-full h-full flex flex-col justify-start items-center md:items-start py-40">
+          <h1 className="text-4xl md:text-8xl font-bold text-black font-grotesk uppercase">
             Got Questions?
             <br />
             Wanna start?
           </h1>
-          <div className="flex justify-between items-center w-full mt-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center w-full mt-auto gap-8 md:gap-0 px-4 md:px-0">
             <div className="bg-[#3c55ff] text-white px-8 py-4 rounded-[34px] mt-16 font-anonymous font-bold uppercase text-[18px]">
               <p>
                 our website is currently under construction but...
