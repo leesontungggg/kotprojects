@@ -306,9 +306,9 @@ export default function Home() {
             height={320}
           />
           <h1 className="mt-4 text-4xl font-semibold uppercase tracking-[0.2em] text-[#12110f] sm:text-6xl font-grotesk">
-            Minimal Goods
+            Kot Projects
             <br />
-            for Daily Rituals
+            Daily Rituals
           </h1>
         </div>
         <div className="flex items-center gap-4 md:gap-6">
@@ -456,76 +456,188 @@ export default function Home() {
       )}
 
       {isCartOpen && (
-        <div className="drawer-overlay" onClick={() => setIsCartOpen(false)} />
-      )}
+        <div className="cart-modal-overlay">
+          <div className="cart-modal-shell">
+            <div className="cart-modal-header">
+              <button
+                type="button"
+                className="icon-button"
+                onClick={() => setIsCartOpen(false)}
+              >
+                <X size={20} />
+              </button>
+              <div className="cart-modal-title">
+                <span>Checkout</span>
+              </div>
+              <div className="cart-modal-actions">
+                {/* <span className="cart-modal-wallet">YZY Wallet</span> */}
+                <ShoppingCart size={18} />
+              </div>
+            </div>
 
-      <aside className={`cart-drawer ${isCartOpen ? "cart-drawer-open" : ""}`}>
-        <div className="cart-header">
-          <h3 className="text-lg font-semibold uppercase tracking-[0.3em] text-[#1c1916]">
-            Cart
-          </h3>
-          <button
-            type="button"
-            className="icon-button"
-            onClick={() => setIsCartOpen(false)}
-          >
-            <X size={20} />
-          </button>
-        </div>
-        <div className="cart-items">
-          {cartItems.length === 0 ? (
-            <p className="text-sm uppercase tracking-[0.2em] text-[#6b645c]">
-              Your cart is empty.
-            </p>
-          ) : (
-            cartItems.map((item) => (
-              <div key={item.id} className="cart-item">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.3em] text-[#8a847c]">
-                    Item
-                  </p>
-                  <p className="text-base font-semibold text-[#171511]">
-                    {item.name}
-                  </p>
-                  <p className="text-sm text-[#6b645c]">Qty {item.quantity}</p>
-                  <div className="cart-item-controls">
-                    <button
-                      type="button"
-                      className="qty-button"
-                      onClick={() => decreaseCartItem(item.id)}
-                    >
-                      <Minus size={16} />
-                    </button>
-                    <button
-                      type="button"
-                      className="qty-button"
-                      onClick={() => increaseCartItem(item.id)}
-                    >
-                      <Plus size={16} />
-                    </button>
-                    <button
-                      type="button"
-                      className="qty-button"
-                      onClick={() => removeCartItem(item.id)}
-                    >
-                      <Trash2 size={16} />
-                    </button>
+            <div className="cart-modal-grid">
+              <div className="cart-form">
+                <div className="cart-section">
+                  <p className="cart-section-title">Contact Information</p>
+                  <label className="cart-label" htmlFor="email">
+                    Email Address
+                  </label>
+                  <input
+                    id="email"
+                    className="cart-input"
+                    type="email"
+                    placeholder="you@email.com"
+                  />
+                  <label className="cart-checkbox">
+                    <input type="checkbox" defaultChecked />
+                    Subscribe to updates and notifications
+                  </label>
+                </div>
+
+                <div className="cart-section">
+                  <p className="cart-section-title">Billing Address</p>
+                  <label className="cart-label" htmlFor="address">
+                    Address
+                  </label>
+                  <input
+                    id="address"
+                    className="cart-input"
+                    type="text"
+                    placeholder="Start typing your address..."
+                  />
+                  <label className="cart-label" htmlFor="address2">
+                    Apartment, suite, unit, etc. (optional)
+                  </label>
+                  <input
+                    id="address2"
+                    className="cart-input"
+                    type="text"
+                    placeholder="Apartment, suite, unit, floor, etc."
+                  />
+                  <div className="cart-grid-2">
+                    <div>
+                      <label className="cart-label" htmlFor="city">
+                        City
+                      </label>
+                      <input id="city" className="cart-input" type="text" />
+                    </div>
+                    <div>
+                      <label className="cart-label" htmlFor="state">
+                        State / Province
+                      </label>
+                      <input id="state" className="cart-input" type="text" />
+                    </div>
+                  </div>
+                  <div className="cart-grid-2">
+                    <div>
+                      <label className="cart-label" htmlFor="zip">
+                        Zip / Postal Code
+                      </label>
+                      <input id="zip" className="cart-input" type="text" />
+                    </div>
+                    <div>
+                      <label className="cart-label" htmlFor="country">
+                        Country
+                      </label>
+                      <select id="country" className="cart-input">
+                        <option>Select country</option>
+                        <option>United States</option>
+                        <option>Canada</option>
+                        <option>United Kingdom</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
-                <span className="text-sm font-semibold text-[#171511]">
-                  {item.price}
-                </span>
+
+                <div className="cart-section">
+                  <p className="cart-section-title">Payment Details</p>
+                  <div className="cart-payment-box">
+                    Please enter your information above to select a payment
+                    method.
+                  </div>
+                  <div className="cart-payment-choice">
+                    <span>Credit / Debit Card</span>
+                    <span className="cart-muted">Visa, Mastercard, Amex</span>
+                  </div>
+                  <div className="cart-payment-choice">
+                    <span>USDC (Crypto)</span>
+                    <span className="cart-muted">Pay with USDC on Solana</span>
+                  </div>
+                </div>
               </div>
-            ))
-          )}
-        </div>
-        <div className="cart-footer">
-          <div className="flex items-center justify-between text-sm uppercase tracking-[0.3em] text-[#6b645c]">
-            <span>Total</span>
-            <span>${cartTotal.toFixed(0)}</span>
+
+              <div className="cart-summary">
+                <div className="cart-summary-header">
+                  <span>Order Summary</span>
+                </div>
+                <div className="cart-items">
+                  {cartItems.length === 0 ? (
+                    <p className="text-sm uppercase tracking-[0.2em] text-[#6b645c]">
+                      Your cart is empty.
+                    </p>
+                  ) : (
+                    cartItems.map((item) => (
+                      <div key={item.id} className="cart-item">
+                        <div>
+                          <p className="text-xs uppercase tracking-[0.3em] text-[#8a847c]">
+                            Item
+                          </p>
+                          <p className="text-base font-semibold text-[#171511]">
+                            {item.name}
+                          </p>
+                          <p className="text-sm text-[#6b645c]">
+                            Qty {item.quantity}
+                          </p>
+                          <div className="cart-item-controls">
+                            <button
+                              type="button"
+                              className="qty-button"
+                              onClick={() => decreaseCartItem(item.id)}
+                            >
+                              <Minus size={16} />
+                            </button>
+                            <button
+                              type="button"
+                              className="qty-button"
+                              onClick={() => increaseCartItem(item.id)}
+                            >
+                              <Plus size={16} />
+                            </button>
+                            <button
+                              type="button"
+                              className="qty-button"
+                              onClick={() => removeCartItem(item.id)}
+                            >
+                              <Trash2 size={16} />
+                            </button>
+                          </div>
+                        </div>
+                        <span className="text-sm font-semibold text-[#171511]">
+                          {item.price}
+                        </span>
+                      </div>
+                    ))
+                  )}
+                </div>
+                <div className="cart-summary-totals">
+                  <div className="cart-summary-row">
+                    <span>Subtotal</span>
+                    <span>${cartTotal.toFixed(0)}</span>
+                  </div>
+                  <div className="cart-summary-row">
+                    <span>Taxes</span>
+                    <span>$0.00</span>
+                  </div>
+                  <div className="cart-summary-row cart-summary-total">
+                    <span>Total</span>
+                    <span>${cartTotal.toFixed(0)}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </aside>
+      )}
     </div>
   );
 }
